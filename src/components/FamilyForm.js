@@ -34,6 +34,7 @@ const INSUREE_FAMILY_OVERVIEW_PANELS_CONTRIBUTION_KEY = "insuree.FamilyOverview.
 const INSUREE_FAMILY_OVERVIEW_CONTRIBUTED_MUTATIONS_KEY = "insuree.FamilyOverview.mutations";
 
 class FamilyForm extends Component {
+  // console.log("Innocent");
   state = {
     lockNew: false,
     reset: 0,
@@ -50,7 +51,9 @@ class FamilyForm extends Component {
         status: INSUREE_ACTIVE_STRING,
       },
     };
+    // console.log("Innocent");
     return family;
+    
   }
 
   componentDidMount() {
@@ -99,7 +102,7 @@ class FamilyForm extends Component {
   reload = async () => {
     const { isSaved } = this.state;
     const { modulesManager, history, mutation, fetchFamilyMutation, family_uuid: familyUuid, fetchFamily } = this.props;
-
+    // console.log("Innocent");
     if (familyUuid) {
       try {
         await fetchFamily(modulesManager, familyUuid);

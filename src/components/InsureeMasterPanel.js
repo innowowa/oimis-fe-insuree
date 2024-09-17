@@ -1,6 +1,11 @@
 import React from "react";
 import { withTheme, withStyles } from "@material-ui/core/styles";
 import { Paper, Grid, Typography, Divider, Checkbox, FormControlLabel } from "@material-ui/core";
+
+
+// AUTOGENERATE INSURANCE NUMBER
+import { fetchNewChfid } from '../services/chfidService';
+
 import {
   formatMessage,
   withTooltip,
@@ -26,6 +31,7 @@ const INSUREE_INSUREE_CONTRIBUTION_KEY = "insuree.Insuree";
 const INSUREE_INSUREE_PANELS_CONTRIBUTION_KEY = "insuree.Insuree.panels";
 
 class InsureeMasterPanel extends FormPanel {
+
   constructor(props) {
     super(props);
     this.isInsureeStatusRequired = props.modulesManager.getConf(
@@ -39,6 +45,22 @@ class InsureeMasterPanel extends FormPanel {
       DEFAULT.RENDER_LAST_NAME_FIRST,
     );
   }
+
+  componentDidMount() {
+    // Fetch CHFID when the component is mounted
+    this.handleFetchChfid();
+  }
+
+  handleFetchChfid = async () => {
+    try {
+        const response = await fetchNewChfid();
+        const newChfid = response.new_chfid;
+        this.updateAttribute('chfId', newChfid);
+    } catch (error) {
+        console.error("Error fetching CHFID:", error);
+    }
+  };
+
 
   renderLastNameField = (edited, classes, readOnly) => {
     return (
@@ -127,7 +149,7 @@ class InsureeMasterPanel extends FormPanel {
                   label="Insuree.chfId"
                   required={true}
                   readOnly={readOnly}
-                  value={edited?.chfId}
+                  value={!!edited && edited.chfId ? String(edited.chfId) : ""}
                   editedId={editedId}
                   onChange={(v) => this.updateAttribute("chfId", v)}
                 />

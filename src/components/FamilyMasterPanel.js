@@ -5,6 +5,7 @@ import { Grid, FormControlLabel, Checkbox, Typography, Divider, Tooltip, IconBut
 import { withTheme, withStyles } from "@material-ui/core/styles";
 import { People as PeopleIcon } from "@material-ui/icons";
 
+
 import {
   historyPush,
   withHistory,
@@ -37,6 +38,7 @@ class FamilyMasterPanel extends FormPanel {
       DEFAULT.RENDER_LAST_NAME_FIRST,
     );
   }
+
 
   renderLastNameField = (edited, classes) => {
     return (

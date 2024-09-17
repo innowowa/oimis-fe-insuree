@@ -43,6 +43,7 @@ import InsureeFamilyOverviewReport from "./reports/InsureeFamilyOverviewReport";
 import InsureeMissingPhotoReport from "./reports/InsureeMissingPhotoReport";
 import InsureePendingEnrollmentReport from "./reports/InsureePendingEnrollmentReport";
 
+
 const ROUTE_INSUREE_FAMILIES = "insuree/families";
 const ROUTE_INSUREE_FAMILY_OVERVIEW = "insuree/families/familyOverview";
 const ROUTE_INSUREE_FAMILY = "insuree/family";
@@ -173,3 +174,5 @@ const DEFAULT_CONFIG = {
 export const InsureeModule = (cfg) => {
   return { ...DEFAULT_CONFIG, ...cfg };
 };
+
+
